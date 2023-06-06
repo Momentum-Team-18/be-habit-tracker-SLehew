@@ -21,18 +21,14 @@ env = environ.Env(
     RENDER=(bool, False)
 )
 
-if env("RENDER"):
-    ALLOWED_HOSTS.append(env("RENDER_ECTERNAL_HOSTNAME"))
-    DJANGO_SUPERUSER_USERNAME = env("DJANGO_SUPERUSER_USERNAME")  # add this
-    DJANGO_SUPERUSER_PASSWORD = env(
-        "DJANGO_SUPERUSER_PASSWORD")  # add this too
-    DJANGO_SUPERUSER_EMAIL = env("DJANGO_SUPERUSER_EMAIL")  # and also this
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+environ.Env.read_env()
+# Build paths inside the project like this: BASE_DIR / ‘subdir’.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -146,6 +142,12 @@ STATIC_ROOT = BASE_DIR / "staticfiles"  # <-- add this
 if not DEBUG:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+if env("RENDER"):
+    ALLOWED_HOSTS.append(env("RENDER_ECTERNAL_HOSTNAME"))
+    DJANGO_SUPERUSER_USERNAME = env("DJANGO_SUPERUSER_USERNAME")  # add this
+    DJANGO_SUPERUSER_PASSWORD = env(
+        "DJANGO_SUPERUSER_PASSWORD")  # add this too
+    DJANGO_SUPERUSER_EMAIL = env("DJANGO_SUPERUSER_EMAIL")  # and also this
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
