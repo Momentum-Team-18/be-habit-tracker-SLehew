@@ -143,7 +143,7 @@ if not DEBUG:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 if env("RENDER"):
-    ALLOWED_HOSTS.append(env("RENDER_ECTERNAL_HOSTNAME"))
+    ALLOWED_HOSTS.append(env("RENDER_EXTERNAL_HOSTNAME"))
     DJANGO_SUPERUSER_USERNAME = env("DJANGO_SUPERUSER_USERNAME")  # add this
     DJANGO_SUPERUSER_PASSWORD = env(
         "DJANGO_SUPERUSER_PASSWORD")  # add this too
