@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1 >Habit Tracker</h1>
+    {% for tracker in trackers %}
+    <div class="goal_container">
+        <a>goal: {{trackers}}</a>
+    </div>
+    {% endfor %}
+
+{% endblock %}
