@@ -14,8 +14,8 @@ def new_goal(request):
     else:
         form = NewGoalForm(request.POST)
         form.save()
-        return redirect('tracker-home')
-    return render(request, 'tracker/new_goal.html', {'form': form})
+        return redirect('goals-list')
+    return render(request, 'tracker/goal_home.html', {'form': form})
 
 
 def goal_list(request):
