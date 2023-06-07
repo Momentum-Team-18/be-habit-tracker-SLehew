@@ -22,7 +22,8 @@ from tracker import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
-    path('', views.tracker_home, name="tracker-home"),
+    path('', views.goal_home, name="goal-list"),
     path('tracker/new', views.new_goal, name='new-goal'),
-
+    path('tracker/goals', views.goal_list, name='goal-list'),
+    path('tracker/<int:pk>/edit', views.edit_goal, name='edit-goal'),
 ]

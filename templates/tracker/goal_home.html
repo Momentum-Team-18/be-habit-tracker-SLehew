@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h1 >Goals</h1>
+    {% for habit_goal in habit_goals %}
+    <div class="goal_container">
+        <a href={% url 'edit-goal' habit_goal.id  %}>goal: {{habit_goal}}</a>
+    </div>
+    {% endfor %}
+
+{% endblock %}
