@@ -1,5 +1,5 @@
 from django import forms
-from .models import Habit_Goal
+from .models import Habit_Goal, Tracker
 
 
 class NewGoalForm(forms.ModelForm):
@@ -7,3 +7,9 @@ class NewGoalForm(forms.ModelForm):
         model = Habit_Goal
         fields = ('author', 'title', 'habit_type', 'goal_date',
                   'current_value', 'goal_date', 'description')
+
+
+class NewTrackerForm(forms.ModelForm):
+    class Meta:
+        model = Tracker
+        fields = ('check_in_date', 'updated_value', 'notes', 'goal')

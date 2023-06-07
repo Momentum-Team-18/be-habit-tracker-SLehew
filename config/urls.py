@@ -26,4 +26,5 @@ urlpatterns = [
     path('tracker/new', views.new_goal, name='new-goal'),
     path('tracker/goals', views.goal_list, name='goal-list'),
     path('tracker/<int:pk>/edit', views.edit_goal, name='edit-goal'),
+    path('tracker/add_tracker', views.add_tracker, name='add-tracker'),
 ]

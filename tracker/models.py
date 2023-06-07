@@ -1,16 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
+import datetime
 
 
 class User(AbstractUser):
     location = models.CharField(max_length=30, blank=True, null=True)
-
-
-class Tracker(models.Model):
-    check_in_date = models.DateField()
-    todays_value = models.IntegerField(blank=True, null=True)
-    notes = models.CharField(max_length=250, blank=True, null=True)
 
 
 class Habit_Goal(models.Model):
@@ -35,3 +30,10 @@ class Habit_Goal(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Tracker(models.Model):
+    check_in_date = models.DateField(default=datetime.date.today)
+    updated_value = models.IntegerField(blank=True, null=True)
+    notes = models.CharField(max_length=250, blank=True, null=True)
+    goal = models.ForeignKey(Habit_Goal, on_delete=models.CASCADE)

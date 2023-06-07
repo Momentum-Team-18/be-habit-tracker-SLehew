@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Tracker, Habit_Goal, User
-from .forms import NewGoalForm
+from .forms import NewGoalForm, NewTrackerForm
 
 
 def tracker_home(request):
@@ -14,8 +14,8 @@ def new_goal(request):
     else:
         form = NewGoalForm(request.POST)
         form.save()
-        return redirect('goals-list')
-    return render(request, 'tracker/goal_home.html', {'form': form})
+        return redirect('goal-list')
+    return render(request, 'tracker/new_goal.html', {'form': form})
 
 
 def goal_list(request):
@@ -44,3 +44,14 @@ def goal_home(request):
         'habit_goal': goal
     }
     return render(request, 'tracker/goal_home.html', context)
+
+
+def add_tracker(request):
+    if request.method == 'GET':
+        form = NewTrackerForm()
+    else:
+        form = NewTrackerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('goal-home')
+    return render(request, 'tracker/add_tracker.html', {'form': form})
