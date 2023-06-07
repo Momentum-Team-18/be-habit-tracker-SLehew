@@ -12,4 +12,4 @@ class NewGoalForm(forms.ModelForm):
 class NewTrackerForm(forms.ModelForm):
     class Meta:
         model = Tracker
-        fields = ('check_in_date', 'updated_value', 'notes', 'goal')
+        fields = ('check_in_date', 'todays_value', 'notes', 'goal')

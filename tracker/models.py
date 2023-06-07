@@ -34,6 +34,9 @@ class Habit_Goal(models.Model):
 
 class Tracker(models.Model):
     check_in_date = models.DateField(default=datetime.date.today)
-    updated_value = models.IntegerField(blank=True, null=True)
+    todays_value = models.IntegerField(blank=True, null=True)
     notes = models.CharField(max_length=250, blank=True, null=True)
     goal = models.ForeignKey(Habit_Goal, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.goal

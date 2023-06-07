@@ -47,11 +47,11 @@ def goal_home(request):
 
 
 def add_tracker(request):
+
     if request.method == 'GET':
         form = NewTrackerForm()
     else:
         form = NewTrackerForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('goal-home')
+        form.save()
+        return redirect('goal-list')
     return render(request, 'tracker/add_tracker.html', {'form': form})
