@@ -36,7 +36,8 @@ class Tracker(models.Model):
     check_in_date = models.DateField(default=datetime.date.today)
     todays_value = models.IntegerField(blank=True, null=True)
     notes = models.CharField(max_length=250, blank=True, null=True)
-    goal = models.ForeignKey(Habit_Goal, on_delete=models.CASCADE)
+    goal = models.ForeignKey(
+        Habit_Goal, on_delete=models.CASCADE, related_name='Trackers')
 
     def __str__(self):
         return self.goal
