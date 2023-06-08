@@ -55,3 +55,23 @@ def add_tracker(request):
         form.save()
         return redirect('goal-list')
     return render(request, 'tracker/add_tracker.html', {'form': form})
+
+
+def edit_tracker(request, pk):
+    goal = get_object_or_404(Tracker, pk=pk)
+    if request.method == 'GET':
+        form = NewTrackerForm(instance=goal)
+
+    else:
+        form = NewTrackerForm(request.POST, instance=goal)
+        if form.is_valid():
+            form.save()
+            return redirect('goal-list', pk=pk)
+    return render(request, 'tracker/edit_tracker.html', {'form': form})
+
+
+def goal_detail(request, pk):
+    goal = get_object_or_404(Habit_Goal, pk=pk)
+    return render(request, 'tracker/goal_detail.html', {'goal': goal})
+
+

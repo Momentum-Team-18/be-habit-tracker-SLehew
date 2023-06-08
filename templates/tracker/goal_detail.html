@@ -4,6 +4,16 @@
 {% block content %}
     <h1 >Goals</h1>
     <div class="goal_container">
-        <a href="url 'edit-goal'">goal: {{habit_goal}}</a>
+        <h3>Habit Type: {{ goal }}</h3>
+        <p>Start Date: {{ goal.goal_date }}</p>
+        <p>Starting Value: {{ goal.current_value }}</p>
+        <p>Goal Value: {{ goal.goal_value }}</p>
+        <a href={% url 'edit-goal' goal.id %}>Edit Goal: {{ habit_goal }}</a>
     </div>
+    <h1>Daily Updates</h1>
+    {% for tracker in trackers %}
+    <div class="goal_container">
+        <a href={% url 'edit-tracker' tracker.id  %}>Goal: {{tracker.check_in_date}}</a>
+    </div>
+    {% endfor %}
 {% endblock %}
