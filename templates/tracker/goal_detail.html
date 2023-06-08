@@ -8,12 +8,13 @@
         <p>Start Date: {{ goal.goal_date }}</p>
         <p>Starting Value: {{ goal.current_value }}</p>
         <p>Goal Value: {{ goal.goal_value }}</p>
+        <p>Description: {{ goal.description }}</p>
         <a href={% url 'edit-goal' goal.id %}>Edit Goal: {{ habit_goal }}</a>
     </div>
     <h1>Daily Updates</h1>
     {% for tracker in trackers %}
     <div class="goal_container">
-        <a href={% url 'edit-tracker' tracker.id  %}>Goal: {{tracker.check_in_date}}</a>
+        <a href={% url 'edit-tracker' tracker.id  %}>{{ tracker.check_in_date }} Daily Value: {{ tracker.todays_value }} {{ tracker.notes }} </a>
     </div>
     {% endfor %}
 {% endblock %}
