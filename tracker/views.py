@@ -72,5 +72,4 @@ def edit_tracker(request, pk):
 
 def goal_detail(request, pk):
     goal = get_object_or_404(Habit_Goal, pk=pk)
-    # trackers = Tracker.objects.all()
     return render(request, 'tracker/goal_detail.html', {'goal': goal})

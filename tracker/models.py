@@ -39,5 +39,12 @@ class Tracker(models.Model):
     goal = models.ForeignKey(
         Habit_Goal, on_delete=models.CASCADE, related_name='Trackers')
 
+    def change_in_value(self):
+        result = self.todays_value - self.goal.goal_value
+        return result
+
     def __str__(self):
         return self.goal
+    # @property
+    # def daily_progress(self):
+    #     return int(self.goal_value) - int(self.todays_value)
