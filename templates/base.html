@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block meta %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock %}
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'goal-list' %}">Home</a>
+    <a href="{% url 'new-goal' %}">New Goal</a>
+    <a href="{% url 'add-tracker' %}">Daily Update</a>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
