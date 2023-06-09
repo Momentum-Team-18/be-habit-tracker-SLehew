@@ -40,7 +40,7 @@ class Tracker(models.Model):
         Habit_Goal, on_delete=models.CASCADE, related_name='Trackers')
 
     def change_in_value(self):
-        result = self.todays_value - self.goal.goal_value
+        result = self.goal.goal_value - self.todays_value
         return result
 
     def __str__(self):

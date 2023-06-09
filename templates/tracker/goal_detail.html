@@ -14,8 +14,7 @@
     <h1>Daily Updates</h1>
     {% for tracker in goal.Trackers.all %}
     <p>{{ tracker.check_in_date }} Daily Value: {{ tracker.todays_value }}   <a href={% url 'edit-tracker' tracker.id %}>Edit</a>
-    <p>Notes: {{ tracker.notes }}</p>
-    <!-- <li>Progress: {{ tracker.daily_progress }}</li> -->
+    <p>Amount necessary to reach your goal: {{ tracker.change_in_value }}</p>
     </p>
 
     {% endfor %}
